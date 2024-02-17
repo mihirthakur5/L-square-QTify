@@ -3,7 +3,9 @@ import styles from './Logo.module.css'
 
 const Logo = () => {
   return (
-    <img src={logo} alt='QTify Logo' className={styles.logo} />
+    <div className={styles.logo}>
+       <img src={logo} alt='QTify Logo' />
+    </div>
   )
 }
 
