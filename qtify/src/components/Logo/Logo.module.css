@@ -1,4 +1,6 @@
 .logo {
     height: 34px;
     width: 67px;
+    display: flex;
+    align-items: center;
 }
