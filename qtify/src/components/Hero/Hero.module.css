@@ -1,0 +1,30 @@
+.hero_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 29px;
+}
+
+.hero_content {
+    width: 80vw;
+    height: 212px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.hero_container img {
+    height: 212px;
+    width: 212px;
+    margin-left: 31px;
+}
+
+.hero_container p {
+    position: relative;
+    top: 10px;
+    font-size: 32px;
+    display: flex;
+    font-weight: 600;
+    text-align: center;
+}

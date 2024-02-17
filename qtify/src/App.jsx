@@ -1,4 +1,5 @@
 import './App.css'
+import Hero from './components/Hero/Hero'
 import Navbar from './components/Navbar/Navbar'
 import { StyledEngineProvider } from '@mui/material'
 
@@ -9,9 +10,8 @@ function App() {
     <>
     <StyledEngineProvider injectFirst>
     <Navbar/>
-
+    <Hero />
     </StyledEngineProvider>
-      
     </>
   )
 }
