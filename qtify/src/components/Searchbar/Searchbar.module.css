@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.search {
+    height: 100%;
+    width: 35vw;
+    padding: 12px;
+    border: 0px solid;
+    background-color: transparent;
+    font-size: 1rem;
+    outline: none;
+}
+
+.container button {
+    height: 100%;
+    width: 66px;
+    left: 50px;
+    border: none;
+    background-color: transparent;
+    border-left: 1px solid black;
+    padding: 13px 13px;
+    cursor: pointer;
+}
