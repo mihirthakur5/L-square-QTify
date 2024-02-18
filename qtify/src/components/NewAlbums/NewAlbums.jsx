@@ -3,18 +3,18 @@ import CreateCard from "../Card/CreateCard";
 import { config } from "../../App";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
-import styles from "./TopAlbums.module.css";
+import styles from "./NewAlbums.module.css";
 import Accordion from "@mui/material/Accordion";
 import AccordionActions from "@mui/material/AccordionActions";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 
-const TopAlbums = () => {
+const NewAlbums = () => {
   const [data, setData] = useState([]);
 
   const filterData = async () => {
     try {
-      let res = await axios.get(`${config.endpoint}/top`);
+      let res = await axios.get(`${config.endpoint}/new`);
       setData(res.data);
     } catch (error) {
       console.log(error.response.data.message);
@@ -35,7 +35,7 @@ const TopAlbums = () => {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          Top Albums
+          New Albums
         </AccordionSummary>
         <AccordionDetails>
           <Grid container rowSpacing={2}>
@@ -53,4 +53,4 @@ const TopAlbums = () => {
   );
 };
 
-export default TopAlbums;
+export default NewAlbums;
