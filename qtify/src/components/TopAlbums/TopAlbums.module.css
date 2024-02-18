@@ -1,0 +1,19 @@
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+p {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+
+
+.container{
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 0 31px;
+}

@@ -1,0 +1,27 @@
+
+.card_content {
+    max-height: 35px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.chip {
+    max-height: 23px;
+    max-width: 71px;
+    font-size: 10px;
+    font-weight: 500;
+    background-color: black;
+    color: white;
+}
+
+.card {
+    max-width: 159px;
+    max-height: 232px;
+    border-radius: 10px;
+}
+
+.album_name{
+    padding: 6px 0;
+    color: white;
+}
