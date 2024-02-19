@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 29px 0;
+    padding: 29px 0 0 0;
 }
 
 .hero_content {
@@ -22,6 +22,7 @@
 
 .hero_container p {
     position: relative;
+    max-width: 799px;
     top: 10px;
     font-size: 32px;
     display: flex;

@@ -15,7 +15,7 @@ const CreateCard = ({ item }) => {
             component="img"
             height="170"
             image={item.image}
-            alt="green iguana"
+            alt={item.title}
           />
           <CardContent className={styles.card_content}>
             <Chip className={styles.chip} label={`${item.follows} Follows`} />
