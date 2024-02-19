@@ -16,9 +16,10 @@ function App() {
     <>
     <StyledEngineProvider injectFirst>
     <Navbar/>
-    <Hero />
+    <Hero value={`100 Thousand Songs, ad-free Over thousands podcast episodes`}/>
     <Carousel album={"top"} label={"Top Albums"}/>
     <Carousel album={"new"} label={"New Albums"}/>
+    <div className='hr-line'></div>
     </StyledEngineProvider>
     </>
   )

@@ -4,4 +4,9 @@ body {
     background-color: var(--black);
 }
 
+.hr-line {
+    margin: 25px 0;
+    border: 1px solid forestgreen;
+    max-width: 100vw;
+}
 

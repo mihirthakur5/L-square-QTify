@@ -8,7 +8,7 @@ import styles from "./Carousel.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const Carousel = ({ album, label }) => {
+const TestCarousel = ({ album, label }) => {
   const [songs, setSongs] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -39,60 +39,30 @@ const Carousel = ({ album, label }) => {
           slidesToShow: 3,
           slidesToScroll: 2,
           infinite: false,
-          dots: false,
-        },
+          dots: false
+        }
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          initialSlide: 0,
-        },
+          initialSlide: 0
+        }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 0,
-        },
-      },
-    ],
-  };
-
-  const collapseCard = () => {
-    return (
-      <Grid container spacing={2}>
-        {songs.map((song, idx) => {
-          return (
-            <Grid item key={song.id} xs={6} md={3} lg={1.5}>
-              <CreateCard item={song} />
-            </Grid>
-          );
-        })}
-      </Grid>
-    );
-  };
-
-  const sliderCard = () => {
-    return (
-      <div className={styles.slider_container}>
-        <Slider {...settings}>
-          {songs.map((song) => {
-            return (
-              <div key={song.id}>
-                <CreateCard item={song} />
-              </div>
-            );
-          })}
-        </Slider>
-      </div>
-    );
+          initialSlide: 0
+        }
+      }
+    ]
   };
 
   useEffect(() => {
-    fetchSongs();
+    fetchSongs(`${config.endpoint}/${album}`);
   }, []);
 
   return (
@@ -103,12 +73,34 @@ const Carousel = ({ album, label }) => {
           <button onClick={toggle}>{isOpen ? "Collapse" : "Show all"}</button>
         </div>
         <div className={styles.songs_list}>
-          {isOpen ? collapseCard() : sliderCard()}
+          {isOpen ? (
+            <Grid container spacing={2}>
+              {songs.map((song) => {
+                return (
+                  <Grid item key={song.id} xs={6} md={3} lg={1.5}>
+                    <CreateCard item={song} />
+                  </Grid>
+                );
+              })}
+            </Grid>
+          ) : (
+            <div className={styles["slider-container"]}>
+              <Slider {...settings}>
+                {songs.map((song, idx) => {
+                  return (
+                    <div key={idx}>
+                      <CreateCard item={song} />
+                    </div>
+                  );
+                })}
+              </Slider>
+            </div>
+          )}
         </div>
       </div>
     </section>
   );
 };
 
-export default Carousel;
+export default TestCarousel;
 
