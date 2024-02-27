@@ -6,8 +6,7 @@ import { CardActionArea } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import styles from "./CreateCard.module.css";
 
-
-const CreateCard = ({ item }) => {
+function CreateCard({ item, children }) {
   return (
     <>
       <Card className={styles.card} sx={{ maxWidth: 159, maxHeight: 232 }}>
@@ -19,7 +18,11 @@ const CreateCard = ({ item }) => {
             alt={item.title}
           />
           <CardContent className={styles.card_content}>
-            <Chip className={styles.chip} label={`${item.follows} Follows`} />
+            {!children ? (
+              <Chip className={styles.chip} label={`${item.follows} Follows`} />
+            ) : (
+              <Chip className={styles.chip} label={`${item.likes} Likes`} />
+            )}
           </CardContent>
         </CardActionArea>
       </Card>
@@ -28,6 +31,6 @@ const CreateCard = ({ item }) => {
       </div>
     </>
   );
-};
+}
 
 export default CreateCard;

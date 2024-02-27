@@ -2,19 +2,21 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
 import CreateCard from "../Card/CreateCard";
-import Slider from "react-slick";
 import { config } from "../../App";
-import styles from "./Carousel.module.css";
+import Slider from "react-slick";
+import styles from "./Section.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const Carousel = ({ album, label }) => {
+const SongSection = ({ songs, label }) => {
   const [songs, setSongs] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const fetchSongs = async () => {
     try {
-      const res = await axios.get(`${config.endpoint}/${album}`);
+      const res = await axios.get(
+        `https://qtify-backend-labs.crio.do/${songs}`
+      );
       setSongs(res.data);
     } catch (e) {
       console.log(e);
@@ -22,21 +24,21 @@ const Carousel = ({ album, label }) => {
   };
 
   const toggle = () => {
-    setIsOpen((prevState) => !prevState);
+    setIsOpen(!isOpen);
   };
 
   var settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 9,
+    slidesToShow: 8,
     slidesToScroll: 2,
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 2,
           infinite: false,
           dots: false,
@@ -46,7 +48,7 @@ const Carousel = ({ album, label }) => {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
           initialSlide: 0,
         },
       },
@@ -64,7 +66,7 @@ const Carousel = ({ album, label }) => {
   const collapseCard = () => {
     return (
       <Grid container spacing={2}>
-        {songs.map((song, idx) => {
+        {songs.map((song) => {
           return (
             <Grid item key={song.id} xs={6} md={3} lg={1.5}>
               <CreateCard item={song} />
@@ -110,4 +112,4 @@ const Carousel = ({ album, label }) => {
   );
 };
 
-export default Carousel;
+export default SongSection;
