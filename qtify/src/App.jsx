@@ -38,8 +38,8 @@ function App() {
         {/* <Carousel album={"top"} label={"Top Albums"} />
         <Carousel album={"new"} label={"New Albums"} /> */}
         {/* <Section album={"top"} label={"Songs"} /> */}
-        <Section source={"top"} label={"Top Albums"} />
-        <Section source={"new"} label={"New Albums"} />
+        <Section source={"top"} label={"Top Albums"} btn={true} />
+        <Section source={"new"} label={"New Albums"} btn={true} />
         <div className="hr-line"></div>
         <Section label={"Songs"} tabs={true} />
       </StyledEngineProvider>
