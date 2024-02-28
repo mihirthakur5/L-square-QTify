@@ -7,8 +7,7 @@ import Slider from "react-slick";
 import styles from "./Section.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import GenreTabs from "../Tabs/GenreTabs";
-import { Tab, Tabs } from "@mui/material";
+import { Tab, Tabs, Tooltip } from "@mui/material";
 
 const Section = ({ source, label, tabs, btn }) => {
   const [albums, setAlbums] = useState([]);
@@ -108,9 +107,11 @@ const Section = ({ source, label, tabs, btn }) => {
       <Grid container spacing={2}>
         {albums.map((song) => {
           return (
-            <Grid item key={song.id} xs={6} md={3} lg={1.5}>
-              <CreateCard item={song} />
-            </Grid>
+            <Tooltip title={`${song.songs.length} songs`} placement="top" arrow>
+              <Grid item key={song.id} xs={6} md={3} lg={1.5}>
+                <CreateCard item={song} />
+              </Grid>
+            </Tooltip>
           );
         })}
       </Grid>
@@ -123,9 +124,15 @@ const Section = ({ source, label, tabs, btn }) => {
         <Slider {...settings}>
           {albums.map((song) => {
             return (
-              <div key={song.id}>
-                <CreateCard item={song} />
-              </div>
+              <Tooltip
+                title={`${song.songs.length} songs`}
+                placement="top"
+                arrow
+              >
+                <div key={song.id}>
+                  <CreateCard item={song} />
+                </div>
+              </Tooltip>
             );
           })}
         </Slider>
@@ -140,6 +147,11 @@ const Section = ({ source, label, tabs, btn }) => {
           value={value}
           onChange={handleChangeSongs}
           aria-label="icon label tabs example"
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: "var(--green)",
+            },
+          }}
         >
           <Tab label="All" style={{ color: "#ffff" }} value={0} />
           {genre.length !== 0 &&
@@ -152,7 +164,7 @@ const Section = ({ source, label, tabs, btn }) => {
               />
             ))}
         </Tabs>
-        <div className={styles.slider_container}>
+        <div className={styles.tabs_slider}>
           <Slider {...settings}>
             {filterSong.map((song) => {
               return (
