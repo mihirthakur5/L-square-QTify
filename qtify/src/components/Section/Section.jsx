@@ -14,7 +14,7 @@ const Section = ({ source, label, tabs, btn }) => {
   const [albums, setAlbums] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [songs, setSongs] = useState([]);
-  const [filtersongs, setFiltersongs] = useState([]);
+  const [filterSong, setFilterSong] = useState([]);
   const [genre, setGenre] = useState([]);
   const [value, setValue] = useState(0);
 
@@ -31,6 +31,7 @@ const Section = ({ source, label, tabs, btn }) => {
     try {
       const res = await axios.get(`${config.endpoint}/songs`);
       setSongs(res.data);
+      setFilterSong(res.data);
     } catch (e) {
       console.error(e);
     }
@@ -51,20 +52,19 @@ const Section = ({ source, label, tabs, btn }) => {
 
   const filterSongs = (value) => {
     if (value === "all") {
-      setFiltersongs(songs);
+      setFilterSong(songs);
     } else {
       const res = songs.filter((data) => data.genre.key === value);
-      setFiltersongs(res);
+      setFilterSong(res);
     }
+    ``;
   };
 
   const handleChangeSongs = (event, newValue) => {
     setValue(newValue);
-    if (newValue === 0) {
-      filterSongs("all");
-    } else {
-      filterSongs(genre.data[newValue - 1].key);
-    }
+    newValue === 0
+      ? filterSongs("all")
+      : filterSongs(genre.data[newValue - 1].key);
   };
 
   var settings = {
@@ -154,7 +154,7 @@ const Section = ({ source, label, tabs, btn }) => {
         </Tabs>
         <div className={styles.slider_container}>
           <Slider {...settings}>
-            {filtersongs.map((song) => {
+            {filterSong.map((song) => {
               return (
                 <div key={song.id}>
                   <CreateCard item={song} children={true} />
@@ -171,7 +171,7 @@ const Section = ({ source, label, tabs, btn }) => {
     fetchAlbums();
     fetchSongs();
     fetchFilters();
-    setFiltersongs(songs);
+    setFilterSong(songs);
   }, []);
 
   return (
